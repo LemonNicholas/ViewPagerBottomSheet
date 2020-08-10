@@ -40,7 +40,7 @@ public class ViewPagerBottomSheetDialog extends AppCompatDialog {
     }
 
     protected ViewPagerBottomSheetDialog(@NonNull Context context, boolean cancelable,
-            OnCancelListener cancelListener) {
+                                         OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         mCancelable = cancelable;
@@ -94,6 +94,12 @@ public class ViewPagerBottomSheetDialog extends AppCompatDialog {
         }
     }
 
+    public void setPeekHeight(int height) {
+        if (mBehavior != null) {
+            mBehavior.setPeekHeight(height);
+        }
+    }
+
     @Override
     public void setCanceledOnTouchOutside(boolean cancel) {
         super.setCanceledOnTouchOutside(cancel);
@@ -134,7 +140,7 @@ public class ViewPagerBottomSheetDialog extends AppCompatDialog {
         ViewCompat.setAccessibilityDelegate(bottomSheet, new AccessibilityDelegateCompat() {
             @Override
             public void onInitializeAccessibilityNodeInfo(View host,
-                    AccessibilityNodeInfoCompat info) {
+                                                          AccessibilityNodeInfoCompat info) {
                 super.onInitializeAccessibilityNodeInfo(host, info);
                 if (mCancelable) {
                     info.addAction(AccessibilityNodeInfoCompat.ACTION_DISMISS);
@@ -197,7 +203,7 @@ public class ViewPagerBottomSheetDialog extends AppCompatDialog {
             = new ViewPagerBottomSheetBehavior.BottomSheetCallback() {
         @Override
         public void onStateChanged(@NonNull View bottomSheet,
-                @ViewPagerBottomSheetBehavior.State int newState) {
+                                   @ViewPagerBottomSheetBehavior.State int newState) {
             if (newState == ViewPagerBottomSheetBehavior.STATE_HIDDEN) {
                 cancel();
             }

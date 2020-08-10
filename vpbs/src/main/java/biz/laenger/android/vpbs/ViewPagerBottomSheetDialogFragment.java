@@ -7,10 +7,13 @@ import android.support.design.widget.BottomSheetDialogFragment;
 
 public class ViewPagerBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
+    public ViewPagerBottomSheetDialog viewPagerBottomSheetDialog;
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new ViewPagerBottomSheetDialog(getContext(), getTheme());
+        viewPagerBottomSheetDialog = new ViewPagerBottomSheetDialog(getContext(), getTheme());
+        return viewPagerBottomSheetDialog;
     }
 
 }
